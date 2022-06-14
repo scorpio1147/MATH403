@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} 
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[]{amssymb} 
+\usepackage{gensymb}
+\DeclareMathOperator{\lcm}{lcm}
+
+\title{HW 8 - MATH403}
+\author{Danesh Sivakumar}
+\date{April 4th, 2022}
+
+
+\begin{document}
+\maketitle 
+
+\subsection*{Problem 1 (Chapter 10, Exercise 24)}
+Suppose that $\phi \colon \mathbb{Z}_{50} \to \mathbb{Z}_{15}$ is a group homomorphism with $\phi(7) = 6$.
+\begin{enumerate}[label=\alph*.]
+    \item Determine $\phi(x)$.
+    \item Determine the image of $\phi$.
+    \item Determine the kernel of $\phi$.
+    \item Determine $\phi^{-1}(3)$. That is, determine the set of all elements that map to 3.
+\end{enumerate}
+
+\begin{proof}
+\qquad
+\begin{enumerate}[label=\alph*.]
+    \item $\phi(7) = 6 \implies 7k \equiv 6 \mod 15 \implies k = 3 \implies \phi(x) = 3x \mod 15$
+    \item Im$(\phi)$ = $\{3x \in \mathbb{Z}_{15} \mid x \in \mathbb{Z}_{50}\} = \{0, 3, 6, 9, 12\}$
+    \item Ker$(\phi) = \{x \in \mathbb{Z}_{50} \mid 3x \equiv 0 \mod 15\} = \{0, 5, 10, 15, 20, 25, 30, 35, 40, 45\}$
+    \item $\phi^{-1}(3) = \{x \in \mathbb{Z}_{50} \mid 3x \equiv 3 \mod 15\} = \{1, 6, 11, 16, 21, 26, 31, 36, 41, 46\}$
+\end{enumerate}
+\end{proof}
+
+
+\subsection*{Problem 2 (Chapter 10, Exercise 30)}
+Suppose that $\phi$ is a homomorphism from a group $G$ onto $\mathbb{Z}_6 \oplus \mathbb{Z}_2$ and that the kernel of $\phi$ has order 5. Explain why $G$ must have normal subgroups of orders 5, 10, 15, 20, 30, and 60.
+
+\begin{proof}
+Since $\mathbb{Z}_6 \oplus \mathbb{Z}_2$ is Abelian, it has normal subgroups of orders 1, 2, 3, 4, 6 and 12 by Lagrange's theorem. If a subgroup $K$ is normal in $\mathbb{Z}_6 \oplus \mathbb{Z}_2$, it follows that $\phi^{-1}(K)$ is normal in $G$. Because $|\text{Ker}(\phi)| = 5$, it follows that $|\phi^{-1}(K)| = 5|K|$, which means that the possible orders of normal subgroups of $G$ are 5, 10, 15, 20, 30, and 60.
+\end{proof}
+
+\subsection*{Problem 3 (Chapter 10, Exercise 36)}
+Suppose that there is a homomorphism $\phi$ from $\mathbb{Z} \oplus \mathbb{Z}$ to a group $G$ such that $\phi((3, 2)) = a$ and $\phi((2, 1)) = b$. Determine $\phi((4, 4))$ in terms of $a$ and $b$. Assume that the operation of $G$ is addition.
+\begin{proof}
+$\phi(1, 1) = \phi((3, 2) - (2, 1)) = \phi(3, 2) - \phi(2, 1) = a - b$, so that $\phi(4, 4) = 4\phi(1, 1) = 4(a-b)$.
+\end{proof}
+
+\subsection*{Problem 4 (Chapter 10, Exercise 38)}
+Let $\alpha$ be a homomorphism from $G_1$ to $H_1$ and $\beta$ be a homomorphism from $G_2$ to $H_2$. Determine the kernel of the homomorphism $\gamma$ from $G_1 \oplus G_2$ to $H_1 \oplus H_2$ defined by $\gamma(g_1, g_2) = (\alpha(g_1), \beta(g_2))$.
+\begin{proof} 
+We want all 2-tuples $(g_1, g_2)$ such that $\alpha(g_1) = e_{h_1}$ and $\beta(g_2) = e_{h_2}$. Let $x$ be an arbitrary member of $\text{Ker}(\alpha)$ and $y$ be an arbitrary member of $\text{Ker}(\beta)$; then $\text{Ker}(\gamma)$ is the set of all possible 2-tuples $(x, y)$.
+\end{proof}
+
+\subsection*{Problem 5 (Chapter 10, Exercise 40)}
+For each pair of positive integers $m$ and $n$, we can define a homomorphism from $\mathbb{Z}$ to $\mathbb{Z}_m \oplus \mathbb{Z}_n$ by $x \to (x \mod m, x \mod n)$. What is the kernel when $(m, n) = (3, 4)$? What is the kernel when $(m, n) = (6, 4)$? Generalize.
+\begin{proof} 
+When $(m, n) = (3, 4)$, $\text{Ker}(\phi) = \langle 12 \rangle$ and when $(m, n) = (6, 4)$, $\text{Ker}(\phi) = \langle 12 \rangle$. We show that the kernel is $\langle\lcm{(m, n)}\rangle$. Indeed, if $x \in \text{Ker}(\phi)$, then $x \equiv 0 \mod n$ and $x \equiv 0 \mod m$ so that $x$ is a common multiple of both $m$ and $n$. Conversely, suppose that $x \in \langle\lcm{(m, n)}\rangle$. Because $\lcm{(m, n)} | x$, it follows that $m | x$ and $n | x$ so that $\phi(x) = (0, 0)$ and thus $x \in \text{Ker}(\phi)$.
+\end{proof}
+
+
+\subsection*{Problem 6 (Chapter 10, Exercise 42)}
+(Third Isomorphism Theorem) If $M$ and $N$ are normal subgroups of $G$ and $N \leq M$, prove that $(G/N)/(M/N) \cong G/M$. Think of this as a form of "cancelling out" the $N$ in the numerator and denominator.
+\begin{proof}
+Define a mapping $\phi$ from $G/N$ to $G/M$ by $\phi(gN) = \phi(gM)$. This is well defined because $xN = yN \implies y^{-1}x \in N \leq M$ so that $y^{-1}x \in M$ and thus $xM = yM$. This is a homomorphism because $\phi(xN)\phi(yN) = xMyM = xyM = \phi(xyN) = \phi(xNyN)$. Because $|N| \leq |M|$, it follows that $|G/N| \geq |G/M|$, meaning that the map is surjective. Thus it follows that $\text{Ker}(\phi) = \{gN \in G/N \mid gM = M\} = M/N$, and thus by the First Isomorphism Theorem $(G/N)/(M/N) \cong G/M$.
+\end{proof}
+
+\subsection*{Problem 7 (Chapter 10, Exercise 52)}
+Show that a homomorphism defined on a cyclic group is completely determined by its action on a generator of the group.
+\begin{proof}
+If $g$ is a generator of $G$, then every element $x \in G$ has the form $g^n$, so that $\phi(x) = \phi(g^n) = \phi(g)^n$ by the homomorphism property; this implies that the homomorphism is completely determined by where it takes the generator.
+\end{proof}
+
+\subsection*{Problem 8 (Chapter 9, Exercise 56)}
+Prove that the mapping from $\mathbb{R}$ under addition to $SL(2, \mathbb{R})$ that takes $x$ to
+\[ \begin{bmatrix}
+\cos{x} & \sin{x} \\
+-\sin{x} & \cos{x} \\
+\end{bmatrix}\]
+is a group homomorphism. What is the kernel of the homomorphism?
+\begin{proof}
+Note that
+\[ \phi(x)\phi(y) = \begin{bmatrix}
+\cos{x} & \sin{x} \\
+-\sin{x} & \cos{x} \\
+\end{bmatrix}\begin{bmatrix}
+\cos{y} & \sin{y} \\
+-\sin{y} & \cos{y} \\
+\end{bmatrix}\]
+\[ = \begin{bmatrix}
+\cos{x}\cos{y} - \sin{x}\sin{y} & \cos{x}\sin{y} + \sin{x}\cos{y} \\
+-\sin{x}\cos{y} - \cos{x}\sin{y} & -\sin{x}\sin{y} + \cos{x}\cos{y} \\
+\end{bmatrix}\]
+\[ = \begin{bmatrix}
+\cos{x + y} & \sin{x + y} \\
+-\sin{x + y} & \cos{x + y} \\
+\end{bmatrix} = \phi(x + y)\]
+so that the operation preserving property holds and thus the mapping is a homomorphism. The kernel is all angles that are a multiple of $2\pi$ because the identity is the identity matrix $I_2$ and the mapping is equivalent to rotating counterclockwise about the origin.
+\end{proof}
+
+\subsection*{Problem 9 (Chapter 10, Exercise 62)}
+Determine all homomorphisms from $\mathbb{Z}$ onto $S_3$. Determine all homomorphisms from $\mathbb{Z}$ to $S_3$.
+\begin{proof} 
+There is no homomorphism $\phi$ from $\mathbb{Z}$ onto $S_3$ because $\phi(\mathbb{Z})$ is Abelian and $S_3$ is not Abelian. There are six elements in $S_3$ and the homomorphisms are completely determined by $\phi(1)$, so that there are six homomorphisms 
+\end{proof}
+
+\subsection*{Problem 10 (Chapter 10, Exercise 66)}
+Let $p$ be a prime. Determine the number of homomorphisms from $\mathbb{Z}_p \oplus \mathbb{Z}_p$ into $\mathbb{Z}_p$.
+\begin{proof}
+Note that the homomorphism is completely determined by $\phi(1, 0)$ and $\phi(0, 1)$ because those are the generators. Any element in $\mathbb{Z}_p$ has order $p$ or $1$, so that $\phi(1, 0)$ and $\phi(0, 1)$ can be any element in $\mathbb{Z}_p$; thus we deduce that there are $p^2$ homomorphisms. 
+
+\end{proof}
+
+
+
+\end{document}
