@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} 
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[]{amssymb} 
+\usepackage{gensymb}
+\DeclareMathOperator{\lcm}{lcm}
+
+\title{HW 7 - MATH403}
+\author{Danesh Sivakumar}
+\date\today
+
+
+\begin{document}
+\maketitle 
+
+\subsection*{Problem 1}
+What is the order of the largest cyclic subgroup of $\mathbb{Z}_6 \oplus \mathbb{Z}_{10} \oplus \mathbb{Z}_{15}$?
+
+\begin{proof}
+Notice that $\mathbb{Z}_6 \cong \mathbb{Z}_2 \oplus \mathbb{Z}_3$, $\mathbb{Z}_{10} \cong \mathbb{Z}_5 \oplus \mathbb{Z}_2$, and $\mathbb{Z}_{15} \cong \mathbb{Z}_3 \oplus \mathbb{Z}_5$. This means that $\mathbb{Z}_6 \oplus \mathbb{Z}_{10} \oplus \mathbb{Z}_{15} \cong \mathbb{Z}_2 \oplus \mathbb{Z}_3 \oplus \mathbb{Z}_5 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_3 \oplus \mathbb{Z}_5 \cong \mathbb{Z}_{30} \oplus \mathbb{Z}_{30}$, which is cyclic and has order 30; thus the largest cyclic subgroup has order 30.
+
+\end{proof}
+
+
+\subsection*{Problem 2}
+How many elements of order 7 are there in $\mathbb{Z}_{49} \oplus \mathbb{Z}_{7}$?
+
+\begin{proof}
+We have that for $(a, b) \in \mathbb{Z}_{49} \oplus \mathbb{Z}_{7}$, $\lcm{(|a|, |b|)} = 7$; thus we have three cases:
+\begin{itemize}
+\item $|a| = 7$ and $|b| = 7$: We have 6 choices for $a$ (7, 14, 21, 28, 35, 42) and 6 choices for $b$ (1, 2, 3, 4, 5, 6) for a total of 36 choices in this case.
+\item $|a| = 1$ and $|b| = 7$ We have one choice for $a$ (1) and the same 6 choices for $b$ as case 1 for a total of 6 choices in this case.
+\item $|a| = 7$ and $|b| = 1$ We have one choice for $b$ (1) and the same 6 choices for $a$ as case 1 for a total of 6 choices in this case.
+\end{itemize}
+Thus we deduce that there are a total of 48 elements of order 7.
+\end{proof}
+
+\subsection*{Problem 3}
+Determine all homomorphisms from $\mathbb{Z}_{12}$ to $\mathbb{Z}_{30}$
+\begin{proof}
+First, notice that the homomorphism is completely determined by the image of 1, so that the homomorphism will have the form $xa$ if 1 maps to $a$. But by Lagrange's theorem and properties of homomorphisms, we deduce that $|a|$ divides both 12 and 30; thus $|a|$ could be 1, 2, 3, or 6. This results in possible values of $a$ being 0, 15, 10, 20, 5 or 25; thus the possible homomorphisms are $0x$, $15x$, $10x$, $20x$, $5x$, or $25x$.
+\end{proof}
+
+\subsection*{Problem 4}
+Determine the structure of the finite abelian group $G/H$ where
+\[ G = U(32), \quad H = {1, 17} \]
+\begin{proof} 
+Note that the eight cosets $1H = \{1, 17\}$, $3H = \{3, 19\}$, $5H = \{5, 21\}$, $7H = \{7, 23\}$, $9H = \{9, 25\}$, $11H = \{11, 27\}$, $13H = \{13, 29\}$ and $15H = \{15, 31\}$ are all distinct; thus they comprise the factor group $G/H$. There are three possibilities: the group is isomorphic to $\mathbb{Z}_8$, $\mathbb{Z}_4 \oplus \mathbb{Z}_2$ or $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$. Because $(3H)^2 = 9H \neq H$, we know that $3H$ has at least order 4 so that the factor group cannot be isomorphic to $\mathbb{Z}_2 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$. Also, $7H$ and $9H$ have order 2, which means the factor group cannot be isomorphic to $\mathbb{Z}_8$; thus this group is isomorphic to $\mathbb{Z}_4 \oplus \mathbb{Z}_2$.
+\end{proof}
+
+\subsection*{Problem 5}
+Let $G = \mathbb{Z}_{60}$ and consider the homomorphism $f \colon G \to G$ given
+by $f(n) = 9n$.
+\begin{enumerate}
+    \item What is the kernel of $f$?
+    \item Determine the factor group $G/Ker(f)$.
+    \item Find a subgroup $H$ of $G$ such that $H/Ker(f)$ has order 2.
+\end{enumerate}
+
+\begin{proof} 
+\qquad
+\begin{enumerate}
+    \item $Ker(f) = \{0, 20, 40\}$
+    \item $G/Ker(f) = \{0, 20, 40\}, \{1, 21, 41\}, \{2, 22, 42\}, \{3, 23, 43\}, \{4, 24, 44\}, \\ \{5, 25, 45\}, \{6, 26, 46\}, \{7, 27, 47\}, \{8, 28, 48\}, \{9, 29, 49\}, \{10, 30, 50\}
+    \\ \{11, 31, 51\}, \{12, 32, 52\}, \{13, 33, 53\}, \{14, 34, 54\}, \{15, 35, 55\}, \{16, 36, 56\} \\ \{17, 37, 57\}, \{18, 38, 58\}, \{19, 39, 59\}$
+    \item $H = \{0, 10, 20, 30, 40, 50\}$
+\end{enumerate}
+\end{proof}
+
+
+\subsection*{Problem 6}
+Determine all the possible homomorphisms $f \colon \mathbb{Z}_{20} \to \mathbb{Z}_{70}$.
+\begin{proof}
+First, notice that the homomorphism is completely determined by the image of 1, so that the homomorphism will have the form $xa$ if 1 maps to $a$. But by Lagrange's theorem and properties of homomorphisms, we deduce that $|a|$ divides both 20 and 70; thus $|a|$ could be 1, 2, 5 or 10. This results in possible values of $a$ being 0, 35, 14, 7, 28, 21, 49, 42, 63 or 56; thus the possible homomorphisms are $0x$, $35x$, $14x$, $7x$, $28x$, $21x$, $49x$, $42x$ $63x$, or $56x$.
+\end{proof}
+
+\subsection*{Problem 7}
+Show that any group of order 99 is cyclic.
+\begin{proof}
+This statement is false; consider $\mathbb{Z}_3 \oplus \mathbb{Z}_3 \oplus \mathbb{Z}_{11}$. This group is not cyclic because 3 and 3 are not relatively prime, but its order is 99 because $3 \times 3 \times 11 = 99$.
+\end{proof}
+
+\subsection*{Problem 8}
+Is $GL(2, \mathbb{R})$ a direct product of $SL(2, \mathbb{R})$ and $\mathbb{R}^*$(non-zero real numbers under multiplication)? Why or why not?
+\begin{proof}
+No; it cannot be an external direct product because the external direct product is a 2-tuple, and it cannot be an internal direct product because $\mathbb{R}*$ is not a normal subgroup of $GL(2, \mathbb{R}^*)$.
+\end{proof}
+
+
+\end{document} 
